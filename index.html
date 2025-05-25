@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>No ai Gratta e Vinci – Associazione contro il gioco d'azzardo</title>
+  <style>
+    /* Font e reset base */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #e0f7e9;
+      color: #14532d;
+      scroll-behavior: smooth;
+      text-align: center; /* testo centrato globale */
+    }
+
+    header {
+      background: linear-gradient(135deg, #84cc16, #a3e635); /* verde più caldo/giallo */
+      color: white;
+      padding: 3rem 1rem;
+      /* rimosso border-radius */
+      box-shadow: 0 4px 8px rgba(132, 204, 22, 0.3);
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    header h1 {
+      margin: 0 0 0.5rem;
+      font-weight: 700;
+      font-size: 2.8rem;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      font-size: 1.25rem;
+      font-weight: 500;
+      opacity: 0.9;
+      margin: 0 auto;
+      max-width: 700px;
+    }
+
+    nav {
+      background-color: rgba(160, 210, 50, 0.85); /* verde meno caldo e leggermente trasparente */
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem 0;
+      font-weight: 600;
+      box-shadow: 0 2px 5px rgba(160, 210, 50, 0.4);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom-left-radius: 25px;
+      border-bottom-right-radius: 25px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+    }
+
+    nav a:hover {
+      background-color: #84cc16;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+      /* testo centrato */
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #65a30d; /* verde caldo scuro */
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 1.1rem;
+      color: #14532d;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+
+    .service {
+      background: white;
+      border-radius: 20px;
+      padding: 1.8rem;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+      text-align: center;
+    }
+
+    .service:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+    }
+
+    .service h3 {
+      margin-top: 0;
+      color: #84cc16;
+      font-size: 1.3rem;
+      margin-bottom: 0.7rem;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 20px;
+      margin-top: 1.5rem;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Ingrandisci la prima immagine 1.75x */
+    #chi-siamo img {
+      transform: scale(o.4);
+      transform-origin: center;
+    }
+
+    #chi-siamo p + p {
+    margin-top: 2rem;
+    }
+    form {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-top: 1rem;
+      color: #65a30d;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    form input, form textarea {
+      width: 80%; /* ridotto per stare più centrati */
+      padding: 0.85rem;
+      margin-top: 0.4rem;
+      border: 2px solid #d9f99d;
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #84cc16;
+      outline: none;
+      box-shadow: 0 0 8px #a3e635aa;
+    }
+
+    button {
+      margin-top: 1.8rem;
+      width: 100%;
+      background: linear-gradient(135deg, #84cc16, #a3e635);
+      border: none;
+      color: white;
+      font-weight: 700;
+      padding: 1rem;
+      border-radius: 20px;
+      font-size: 1.15rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #65a30d, #84cc16);
+    }
+
+    #conferma {
+      display: none;
+      color: #84cc16;
+      font-weight: 700;
+      margin-top: 1rem;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      background: #84cc16;
+      color: white;
+      text-align: center;
+      padding: 1.2rem 1rem;
+      margin-top: 4rem;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 -4px 8px rgba(132, 204, 22, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>No ai Gratta e Vinci – Uniti contro il Gioco d'Azzardo</h1>
+    <p>Associazione volontaria per combattere la dipendenza da Gratta e Vinci</p>
+  </header>
+
+  <nav>
+    <a href="#chi-siamo">Chi siamo</a>
+    <a href="#cosa-facciamo">Cosa facciamo</a>
+    <a href="#incontro">Prenota un incontro</a>
+  </nav>
+
+  <section id="chi-siamo">
+    <h2>Chi siamo</h2>
+    <p>Siamo un gruppo di volontari che ha deciso di dire basta alla piaga del gioco d'azzardo, in particolare ai Gratta e Vinci, che colpiscono milioni di italiani ogni anno. La nostra missione è informare, supportare e offrire alternative sane alla dipendenza. 
+      Operiamo in tutta l'emilia romagna, in collaborazione con molte altre realtà. 
+    </p>
+    <img src="trasferimento.jfif" alt="Incontro tra volontari" />
+  </section>
+
+  <section id="cosa-facciamo">
+    <h2>Cosa facciamo</h2>
+    <div class="services">
+      <div class="service">
+        <h3>Incontri di gruppo</h3>
+        <p>Organizziamo gruppi di ascolto settimanali per condividere esperienze e trovare forza insieme.</p>
+      </div>
+      <div class="service">
+        <h3>Supporto psicologico</h3>
+        <p>Collaboriamo con psicologi volontari per aiutare chi è in difficoltà con percorsi personalizzati.</p>
+      </div>
+      <div class="service">
+        <h3>Campagne nelle scuole</h3>
+        <p>Andiamo nelle scuole a sensibilizzare giovani e famiglie sui pericoli del gioco d’azzardo.</p>
+      </div>
+      <div class="service">
+        <h3>Consulenze legali gratuite</h3>
+        <p>Offriamo supporto legale per chi ha subito danni economici a causa del gioco.</p>
+      </div>
+    </div>
+    <img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=800&q=80" alt="Volontari in azione" />
+  </section>
+
+  <section id="incontro">
+    <h2>Prenota un incontro</h2>
+    <p>Compila il modulo per simulare la prenotazione di un incontro con uno dei nostri volontari.</p>
+    <form onsubmit="event.preventDefault(); mostraMessaggio();">
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" name="nome" placeholder="Il tuo nome" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="La tua email" required />
+
+      <label for="messaggio">Messaggio</label>
+      <textarea id="messaggio" name="messaggio" rows="4" placeholder="Scrivi un messaggio..."></textarea>
+
+      <button type="submit">Invia richiesta</button>
+
+      <p id="conferma">✅ Richiesta inviata! Ti risponderemo presto.</p>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 No ai Gratta e Vinci - Associazione volontari contro il gioco d'azzardo</p>
+  </footer>
+
+  <script>
+    function mostraMessaggio() {
+      const msg = document.getElementById('conferma');
+      msg.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
